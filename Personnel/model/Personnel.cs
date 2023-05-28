@@ -1,6 +1,6 @@
 ﻿namespace Personnel.model
 {
-	internal class Personnel
+	public class Personnel
 	{
 
 	}
