@@ -23,13 +23,6 @@ namespace Personnel.view
 			RemplirListePersonnels();
 		}
 
-		private void RemplirListePersonnels()
-		{
-			List<model.Personnel> lesPersonnels = controller.GetLesPersonnels();
-			bdgPersonnels.DataSource = lesPersonnels;
-			lsbPersonnel.DataSource = bdgPersonnels;
-		}
-
 		private void RemplirListeMotifs()
 		{
 			List<Motif> lesMotifs = controller.GetLesMotifs();
@@ -42,6 +35,13 @@ namespace Personnel.view
 			List<Service> lesServices = controller.GetLesServices();
 			bdgServices.DataSource = lesServices;
 			cmbServices.DataSource = bdgServices;
+		}
+
+		private void RemplirListePersonnels()
+		{
+			List<model.Personnel> lesPersonnels = controller.GetLesPersonnels();
+			bdgPersonnels.DataSource = lesPersonnels;
+			lsbPersonnel.DataSource = bdgPersonnels;
 		}
 
 		private void RemplirListeAbsences(model.Personnel personnel)
