@@ -1,4 +1,5 @@
 ﻿using Personnel.dal;
+using Personnel.model;
 
 namespace Personnel.control
 {
@@ -13,7 +14,7 @@ namespace Personnel.control
 
 		public bool ControleAuthentification(string login, string mdp)
 		{
-			return accessResponsable.ControleAuthentification(login, mdp);
+			return accessResponsable.ControleAuthentification(new Responsable(login, mdp));
 		}
 	}
 }

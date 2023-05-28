@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System;
+using Personnel.model;
 
 namespace Personnel.dal
 {
@@ -12,7 +13,7 @@ namespace Personnel.dal
 			access = Access.GetInstance();
 		}
 
-		public bool ControleAuthentification(string login, string mdp)
+		public bool ControleAuthentification(Responsable responsable)
 		{
 			if (access.Manager != null)
 			{
@@ -20,8 +21,8 @@ namespace Personnel.dal
 					"where r.login = @login and r.pwd = SHA2(@mdp, 256)";
 				Dictionary<string, object> parameters = new Dictionary<string, object>
 				{
-					{ "@login", login },
-					{ "@mdp", mdp }
+					{ "@login", responsable.Login },
+					{ "@mdp", responsable.Pwd }
 				};
 				try
 				{

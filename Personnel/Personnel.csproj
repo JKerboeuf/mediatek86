@@ -94,7 +94,10 @@
     <Compile Include="dal\AccessPersonnel.cs" />
     <Compile Include="dal\AccessResponsable.cs" />
     <Compile Include="model\Absence.cs" />
+    <Compile Include="model\Motif.cs" />
     <Compile Include="model\Personnel.cs" />
+    <Compile Include="model\Responsable.cs" />
+    <Compile Include="model\Service.cs" />
     <Compile Include="view\FrmConnexion.cs">
       <SubType>Form</SubType>
     </Compile>
