@@ -53,6 +53,7 @@ namespace Personnel.view
 
 		private void RemplirModifPersonnel(model.Personnel personnel)
 		{
+			ViderModifAbsence();
 			txtNom.Text = personnel.Nom;
 			txtPrenom.Text = personnel.Prenom;
 			txtTel.Text = personnel.Tel;
@@ -69,6 +70,24 @@ namespace Personnel.view
 			grbAbsModif.Enabled = true;
 		}
 
+		private void ViderModifPersonnel()
+		{
+			grbPersoModif.Enabled = false;
+			txtNom.Text = string.Empty;
+			txtPrenom.Text = string.Empty;
+			txtTel.Text = string.Empty;
+			txtMail.Text = string.Empty;
+			cmbServices.SelectedIndex = 0;
+		}
+
+		private void ViderModifAbsence()
+		{
+			grbAbsModif.Enabled = false;
+			dtpDateDebut.Value = DateTime.Now;
+			dtpDateFin.Value = DateTime.Now;
+			cmbMotifs.SelectedIndex = 0;
+		}
+
 		private void LsbPersonnel_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
 			if (lsbPersonnel.SelectedIndex >= 0)
@@ -81,7 +100,15 @@ namespace Personnel.view
 
 		private void BtnPersoSuppr_Click(object sender, EventArgs e)
 		{
-			// Method intentionally left empty.
+			if (lsbPersonnel.SelectedIndex >= 0 &&
+				MessageBox.Show("Voulez-vous vraiment supprimer ce personnel ?", "Supprimer un personnel", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+			{
+				model.Personnel personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
+				controller.DeletePersonnel(personnel);
+				RemplirListePersonnels();
+				personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
+				RemplirListeAbsences(personnel);
+			}
 		}
 
 		private void BtnPersoAjout_Click(object sender, EventArgs e)
@@ -91,12 +118,7 @@ namespace Personnel.view
 
 		private void BtnPersoAnnuler_Click(object sender, EventArgs e)
 		{
-			grbPersoModif.Enabled = false;
-			txtNom.Text = string.Empty;
-			txtPrenom.Text = string.Empty;
-			txtTel.Text = string.Empty;
-			txtMail.Text = string.Empty;
-			cmbServices.SelectedIndex = 0;
+			ViderModifPersonnel();
 		}
 
 		private void BtnPersoEnreg_Click(object sender, EventArgs e)
@@ -116,7 +138,14 @@ namespace Personnel.view
 
 		private void BtnAbsSuppr_Click(object sender, EventArgs e)
 		{
-			// Method intentionally left empty.
+			if (lsbAbsence.SelectedIndex >= 0 &&
+				MessageBox.Show("Voulez-vous vraiment supprimer cette absence ?", "Supprimer une absence", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+			{
+				model.Personnel personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
+				Absence absence = controller.GetLesAbsences(personnel)[lsbAbsence.SelectedIndex];
+				controller.DeleteAbsence(absence);
+				RemplirListeAbsences(personnel);
+			}
 		}
 
 		private void BtnAbsAjout_Click(object sender, EventArgs e)
@@ -126,10 +155,7 @@ namespace Personnel.view
 
 		private void BtnAbsAnnuler_Click(object sender, EventArgs e)
 		{
-			grbAbsModif.Enabled = false;
-			dtpDateDebut.Value = DateTime.Now;
-			dtpDateFin.Value = DateTime.Now;
-			cmbMotifs.SelectedIndex = 0;
+			ViderModifAbsence();
 		}
 
 		private void BtnAbsEnreg_Click(object sender, EventArgs e)

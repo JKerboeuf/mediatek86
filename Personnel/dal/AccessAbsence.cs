@@ -13,7 +13,33 @@ namespace Personnel.dal
 			access = Access.GetInstance();
 		}
 
-		internal List<Absence> GetLesAbsences(model.Personnel personnel)
+		private Absence ConvertAbsence(object[] absence)
+		{
+			Service service = new Service(
+				(int)absence[9],
+				(string)absence[10]
+			);
+			model.Personnel personnel = new model.Personnel(
+				(int)absence[4],
+				service,
+				(string)absence[5],
+				(string)absence[6],
+				(string)absence[7],
+				(string)absence[8]
+			);
+			Motif motif = new Motif(
+				(int)absence[2],
+				(string)absence[3]
+			);
+			return new Absence(
+				personnel,
+				motif,
+				(DateTime)absence[0],
+				(DateTime)absence[1]
+			);
+		}
+
+		public List<Absence> GetLesAbsences(model.Personnel personnel)
 		{
 			List<Absence> lesAbsences = new List<Absence>();
 			if (access.Manager != null)
@@ -46,30 +72,33 @@ namespace Personnel.dal
 			return lesAbsences;
 		}
 
-		private Absence ConvertAbsence(object[] absence)
+		public void AddAbsence(Absence absence)
 		{
-			Service service = new Service(
-				(int)absence[9],
-				(string)absence[10]
-			);
-			model.Personnel personnel = new model.Personnel(
-				(int)absence[4],
-				service,
-				(string)absence[5],
-				(string)absence[6],
-				(string)absence[7],
-				(string)absence[8]
-			);
-			Motif motif = new Motif(
-				(int)absence[2],
-				(string)absence[3]
-			);
-			return new Absence(
-				personnel,
-				motif,
-				(DateTime)absence[0],
-				(DateTime)absence[1]
-			);
+			// Method intentionally left empty.
+		}
+
+		public void DeleteAbsence(Absence absence)
+		{
+			if (access.Manager != null)
+			{
+				string req = "delete from absence a " +
+					"where a.idpersonnel = @idpersonnel " +
+					"and a.datedebut = @datedebut;";
+				Dictionary<string, object> parameters = new Dictionary<string, object>
+				{
+					{ "@idpersonnel", absence.Personnel.Id },
+					{ "@datedebut", absence.DateDebut.ToString("yyyy-MM-dd HH:mm:ss") }
+				};
+				try
+				{
+					access.Manager.ReqUpdate(req, parameters);
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine(e.Message);
+					Environment.Exit(0);
+				}
+			}
 		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using Personnel.dal;
 using Personnel.model;
+using System;
 using System.Collections.Generic;
 
 namespace Personnel.control
@@ -37,6 +38,26 @@ namespace Personnel.control
 		public List<Absence> GetLesAbsences(model.Personnel personnel)
 		{
 			return accessAbsence.GetLesAbsences(personnel);
+		}
+
+		public void AddPersonnel(model.Personnel personnel)
+		{
+			accessPersonnel.AddPersonnel(personnel);
+		}
+
+		internal void AddAbsence(Absence absence)
+		{
+			accessAbsence.AddAbsence(absence);
+		}
+
+		public void DeletePersonnel(model.Personnel personnel)
+		{
+			accessPersonnel.DeletePersonnel(personnel);
+		}
+
+		internal void DeleteAbsence(Absence absence)
+		{
+			accessAbsence.DeleteAbsence(absence);
 		}
 	}
 }
