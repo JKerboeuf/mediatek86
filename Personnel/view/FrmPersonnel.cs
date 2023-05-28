@@ -16,5 +16,55 @@ namespace Personnel.view
 		{
 			InitializeComponent();
 		}
+
+		private void LsbPersonnel_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			// Method intentionally left empty.
+		}
+
+		private void BtnPersoSuppr_Click(object sender, EventArgs e)
+		{
+			// Method intentionally left empty.
+		}
+
+		private void BtnPersoAjout_Click(object sender, EventArgs e)
+		{
+			// Method intentionally left empty.
+		}
+
+		private void BtnPersoAnnuler_Click(object sender, EventArgs e)
+		{
+			// Method intentionally left empty.
+		}
+
+		private void BtnPersoEnreg_Click(object sender, EventArgs e)
+		{
+			// Method intentionally left empty.
+		}
+
+		private void LsbAbsence_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			// Method intentionally left empty.
+		}
+
+		private void BtnAbsSuppr_Click(object sender, EventArgs e)
+		{
+			// Method intentionally left empty.
+		}
+
+		private void BtnAbsAjout_Click(object sender, EventArgs e)
+		{
+			// Method intentionally left empty.
+		}
+
+		private void BtnAbsAnnuler_Click(object sender, EventArgs e)
+		{
+			// Method intentionally left empty.
+		}
+
+		private void BtnAbsEnreg_Click(object sender, EventArgs e)
+		{
+			// Method intentionally left empty.
+		}
 	}
 }

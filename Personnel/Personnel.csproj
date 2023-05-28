@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="model\Absence.cs" />
+    <Compile Include="model\Personnel.cs" />
     <Compile Include="view\FrmConnexion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,7 +92,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="control\" />
-    <Folder Include="model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
