@@ -1,4 +1,5 @@
 ﻿using Personnel.control;
+using Personnel.model;
 using System;
 using System.Windows.Forms;
 
@@ -20,7 +21,8 @@ namespace Personnel.view
 			string mdp = txtMdp.Text;
 			if (login != string.Empty && mdp != string.Empty)
 			{
-				if (controller.ControleAuthentification(login, mdp))
+				Responsable responsable = new Responsable(login, mdp);
+				if (controller.ControleAuthentification(responsable))
 				{
 					new FrmPersonnel().ShowDialog();
 				}

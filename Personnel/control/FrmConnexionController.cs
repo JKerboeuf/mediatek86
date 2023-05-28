@@ -12,9 +12,9 @@ namespace Personnel.control
 			accessResponsable = new AccessResponsable();
 		}
 
-		public bool ControleAuthentification(string login, string mdp)
+		public bool ControleAuthentification(Responsable responsable)
 		{
-			return accessResponsable.ControleAuthentification(new Responsable(login, mdp));
+			return accessResponsable.ControleAuthentification(responsable);
 		}
 	}
 }

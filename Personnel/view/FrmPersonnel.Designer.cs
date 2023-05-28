@@ -34,15 +34,15 @@
 			this.btnPersoSuppr = new System.Windows.Forms.Button();
 			this.grbPersoModif = new System.Windows.Forms.GroupBox();
 			this.label5 = new System.Windows.Forms.Label();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.cmbServices = new System.Windows.Forms.ComboBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.textBox4 = new System.Windows.Forms.TextBox();
-			this.textBox3 = new System.Windows.Forms.TextBox();
-			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.txtMail = new System.Windows.Forms.TextBox();
+			this.txtTel = new System.Windows.Forms.TextBox();
+			this.txtPrenom = new System.Windows.Forms.TextBox();
+			this.txtNom = new System.Windows.Forms.TextBox();
 			this.btnPersoEnreg = new System.Windows.Forms.Button();
 			this.btnPersoAnnuler = new System.Windows.Forms.Button();
 			this.grbAbsence = new System.Windows.Forms.GroupBox();
@@ -53,9 +53,9 @@
 			this.label8 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
-			this.comboBox2 = new System.Windows.Forms.ComboBox();
-			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+			this.cmbMotifs = new System.Windows.Forms.ComboBox();
+			this.dtpDateFin = new System.Windows.Forms.DateTimePicker();
+			this.dtpDateDebut = new System.Windows.Forms.DateTimePicker();
 			this.btnAbsEnreg = new System.Windows.Forms.Button();
 			this.btnAbsAnnuler = new System.Windows.Forms.Button();
 			this.grbPersonnel.SuspendLayout();
@@ -71,7 +71,7 @@
 			this.grbPersonnel.Controls.Add(this.btnPersoSuppr);
 			this.grbPersonnel.Location = new System.Drawing.Point(12, 12);
 			this.grbPersonnel.Name = "grbPersonnel";
-			this.grbPersonnel.Size = new System.Drawing.Size(200, 318);
+			this.grbPersonnel.Size = new System.Drawing.Size(249, 318);
 			this.grbPersonnel.TabIndex = 0;
 			this.grbPersonnel.TabStop = false;
 			this.grbPersonnel.Text = "Personnel";
@@ -81,13 +81,13 @@
 			this.lsbPersonnel.FormattingEnabled = true;
 			this.lsbPersonnel.Location = new System.Drawing.Point(6, 19);
 			this.lsbPersonnel.Name = "lsbPersonnel";
-			this.lsbPersonnel.Size = new System.Drawing.Size(188, 264);
+			this.lsbPersonnel.Size = new System.Drawing.Size(237, 264);
 			this.lsbPersonnel.TabIndex = 2;
-			this.lsbPersonnel.SelectedIndexChanged += new System.EventHandler(this.LsbPersonnel_SelectedIndexChanged);
+			this.lsbPersonnel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LsbPersonnel_MouseDoubleClick);
 			// 
 			// btnPersoAjout
 			// 
-			this.btnPersoAjout.Location = new System.Drawing.Point(109, 289);
+			this.btnPersoAjout.Location = new System.Drawing.Point(158, 289);
 			this.btnPersoAjout.Name = "btnPersoAjout";
 			this.btnPersoAjout.Size = new System.Drawing.Size(85, 23);
 			this.btnPersoAjout.TabIndex = 1;
@@ -108,18 +108,19 @@
 			// grbPersoModif
 			// 
 			this.grbPersoModif.Controls.Add(this.label5);
-			this.grbPersoModif.Controls.Add(this.comboBox1);
+			this.grbPersoModif.Controls.Add(this.cmbServices);
 			this.grbPersoModif.Controls.Add(this.label4);
 			this.grbPersoModif.Controls.Add(this.label3);
 			this.grbPersoModif.Controls.Add(this.label2);
 			this.grbPersoModif.Controls.Add(this.label1);
-			this.grbPersoModif.Controls.Add(this.textBox4);
-			this.grbPersoModif.Controls.Add(this.textBox3);
-			this.grbPersoModif.Controls.Add(this.textBox2);
-			this.grbPersoModif.Controls.Add(this.textBox1);
+			this.grbPersoModif.Controls.Add(this.txtMail);
+			this.grbPersoModif.Controls.Add(this.txtTel);
+			this.grbPersoModif.Controls.Add(this.txtPrenom);
+			this.grbPersoModif.Controls.Add(this.txtNom);
 			this.grbPersoModif.Controls.Add(this.btnPersoEnreg);
 			this.grbPersoModif.Controls.Add(this.btnPersoAnnuler);
-			this.grbPersoModif.Location = new System.Drawing.Point(218, 12);
+			this.grbPersoModif.Enabled = false;
+			this.grbPersoModif.Location = new System.Drawing.Point(267, 12);
 			this.grbPersoModif.Name = "grbPersoModif";
 			this.grbPersoModif.Size = new System.Drawing.Size(263, 181);
 			this.grbPersoModif.TabIndex = 1;
@@ -135,13 +136,13 @@
 			this.label5.TabIndex = 13;
 			this.label5.Text = "Service";
 			// 
-			// comboBox1
+			// cmbServices
 			// 
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(79, 123);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(176, 21);
-			this.comboBox1.TabIndex = 12;
+			this.cmbServices.FormattingEnabled = true;
+			this.cmbServices.Location = new System.Drawing.Point(79, 123);
+			this.cmbServices.Name = "cmbServices";
+			this.cmbServices.Size = new System.Drawing.Size(176, 21);
+			this.cmbServices.TabIndex = 12;
 			// 
 			// label4
 			// 
@@ -179,33 +180,33 @@
 			this.label1.TabIndex = 8;
 			this.label1.Text = "Nom";
 			// 
-			// textBox4
+			// txtMail
 			// 
-			this.textBox4.Location = new System.Drawing.Point(79, 97);
-			this.textBox4.Name = "textBox4";
-			this.textBox4.Size = new System.Drawing.Size(176, 20);
-			this.textBox4.TabIndex = 7;
+			this.txtMail.Location = new System.Drawing.Point(79, 97);
+			this.txtMail.Name = "txtMail";
+			this.txtMail.Size = new System.Drawing.Size(176, 20);
+			this.txtMail.TabIndex = 7;
 			// 
-			// textBox3
+			// txtTel
 			// 
-			this.textBox3.Location = new System.Drawing.Point(79, 71);
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(176, 20);
-			this.textBox3.TabIndex = 6;
+			this.txtTel.Location = new System.Drawing.Point(79, 71);
+			this.txtTel.Name = "txtTel";
+			this.txtTel.Size = new System.Drawing.Size(176, 20);
+			this.txtTel.TabIndex = 6;
 			// 
-			// textBox2
+			// txtPrenom
 			// 
-			this.textBox2.Location = new System.Drawing.Point(79, 45);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(176, 20);
-			this.textBox2.TabIndex = 5;
+			this.txtPrenom.Location = new System.Drawing.Point(79, 45);
+			this.txtPrenom.Name = "txtPrenom";
+			this.txtPrenom.Size = new System.Drawing.Size(176, 20);
+			this.txtPrenom.TabIndex = 5;
 			// 
-			// textBox1
+			// txtNom
 			// 
-			this.textBox1.Location = new System.Drawing.Point(79, 19);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(176, 20);
-			this.textBox1.TabIndex = 4;
+			this.txtNom.Location = new System.Drawing.Point(79, 19);
+			this.txtNom.Name = "txtNom";
+			this.txtNom.Size = new System.Drawing.Size(176, 20);
+			this.txtNom.TabIndex = 4;
 			// 
 			// btnPersoEnreg
 			// 
@@ -232,9 +233,9 @@
 			this.grbAbsence.Controls.Add(this.lsbAbsence);
 			this.grbAbsence.Controls.Add(this.btnAbsAjout);
 			this.grbAbsence.Controls.Add(this.btnAbsSuppr);
-			this.grbAbsence.Location = new System.Drawing.Point(487, 12);
+			this.grbAbsence.Location = new System.Drawing.Point(536, 12);
 			this.grbAbsence.Name = "grbAbsence";
-			this.grbAbsence.Size = new System.Drawing.Size(200, 318);
+			this.grbAbsence.Size = new System.Drawing.Size(249, 318);
 			this.grbAbsence.TabIndex = 2;
 			this.grbAbsence.TabStop = false;
 			this.grbAbsence.Text = "Absence";
@@ -244,13 +245,13 @@
 			this.lsbAbsence.FormattingEnabled = true;
 			this.lsbAbsence.Location = new System.Drawing.Point(6, 19);
 			this.lsbAbsence.Name = "lsbAbsence";
-			this.lsbAbsence.Size = new System.Drawing.Size(188, 264);
+			this.lsbAbsence.Size = new System.Drawing.Size(237, 264);
 			this.lsbAbsence.TabIndex = 4;
-			this.lsbAbsence.SelectedIndexChanged += new System.EventHandler(this.LsbAbsence_SelectedIndexChanged);
+			this.lsbAbsence.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LsbAbsence_MouseDoubleClick);
 			// 
 			// btnAbsAjout
 			// 
-			this.btnAbsAjout.Location = new System.Drawing.Point(109, 289);
+			this.btnAbsAjout.Location = new System.Drawing.Point(158, 289);
 			this.btnAbsAjout.Name = "btnAbsAjout";
 			this.btnAbsAjout.Size = new System.Drawing.Size(85, 23);
 			this.btnAbsAjout.TabIndex = 3;
@@ -273,12 +274,13 @@
 			this.grbAbsModif.Controls.Add(this.label8);
 			this.grbAbsModif.Controls.Add(this.label7);
 			this.grbAbsModif.Controls.Add(this.label6);
-			this.grbAbsModif.Controls.Add(this.comboBox2);
-			this.grbAbsModif.Controls.Add(this.dateTimePicker2);
-			this.grbAbsModif.Controls.Add(this.dateTimePicker1);
+			this.grbAbsModif.Controls.Add(this.cmbMotifs);
+			this.grbAbsModif.Controls.Add(this.dtpDateFin);
+			this.grbAbsModif.Controls.Add(this.dtpDateDebut);
 			this.grbAbsModif.Controls.Add(this.btnAbsEnreg);
 			this.grbAbsModif.Controls.Add(this.btnAbsAnnuler);
-			this.grbAbsModif.Location = new System.Drawing.Point(218, 199);
+			this.grbAbsModif.Enabled = false;
+			this.grbAbsModif.Location = new System.Drawing.Point(267, 199);
 			this.grbAbsModif.Name = "grbAbsModif";
 			this.grbAbsModif.Size = new System.Drawing.Size(263, 131);
 			this.grbAbsModif.TabIndex = 3;
@@ -312,27 +314,29 @@
 			this.label6.TabIndex = 8;
 			this.label6.Text = "Date Debut";
 			// 
-			// comboBox2
+			// cmbMotifs
 			// 
-			this.comboBox2.FormattingEnabled = true;
-			this.comboBox2.Location = new System.Drawing.Point(79, 71);
-			this.comboBox2.Name = "comboBox2";
-			this.comboBox2.Size = new System.Drawing.Size(176, 21);
-			this.comboBox2.TabIndex = 7;
+			this.cmbMotifs.FormattingEnabled = true;
+			this.cmbMotifs.Location = new System.Drawing.Point(79, 71);
+			this.cmbMotifs.Name = "cmbMotifs";
+			this.cmbMotifs.Size = new System.Drawing.Size(176, 21);
+			this.cmbMotifs.TabIndex = 7;
 			// 
-			// dateTimePicker2
+			// dtpDateFin
 			// 
-			this.dateTimePicker2.Location = new System.Drawing.Point(79, 45);
-			this.dateTimePicker2.Name = "dateTimePicker2";
-			this.dateTimePicker2.Size = new System.Drawing.Size(176, 20);
-			this.dateTimePicker2.TabIndex = 6;
+			this.dtpDateFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtpDateFin.Location = new System.Drawing.Point(79, 45);
+			this.dtpDateFin.Name = "dtpDateFin";
+			this.dtpDateFin.Size = new System.Drawing.Size(176, 20);
+			this.dtpDateFin.TabIndex = 6;
 			// 
-			// dateTimePicker1
+			// dtpDateDebut
 			// 
-			this.dateTimePicker1.Location = new System.Drawing.Point(79, 19);
-			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.Size = new System.Drawing.Size(176, 20);
-			this.dateTimePicker1.TabIndex = 5;
+			this.dtpDateDebut.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtpDateDebut.Location = new System.Drawing.Point(79, 19);
+			this.dtpDateDebut.Name = "dtpDateDebut";
+			this.dtpDateDebut.Size = new System.Drawing.Size(176, 20);
+			this.dtpDateDebut.TabIndex = 5;
 			// 
 			// btnAbsEnreg
 			// 
@@ -358,7 +362,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(699, 338);
+			this.ClientSize = new System.Drawing.Size(797, 338);
 			this.Controls.Add(this.grbAbsModif);
 			this.Controls.Add(this.grbAbsence);
 			this.Controls.Add(this.grbPersoModif);
@@ -391,22 +395,22 @@
 		private System.Windows.Forms.Button btnAbsAnnuler;
 		private System.Windows.Forms.ListBox lsbPersonnel;
 		private System.Windows.Forms.ListBox lsbAbsence;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox txtNom;
 		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.ComboBox cmbServices;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox textBox4;
-		private System.Windows.Forms.TextBox textBox3;
-		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.TextBox txtMail;
+		private System.Windows.Forms.TextBox txtTel;
+		private System.Windows.Forms.TextBox txtPrenom;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.ComboBox comboBox2;
-		private System.Windows.Forms.DateTimePicker dateTimePicker2;
-		private System.Windows.Forms.DateTimePicker dateTimePicker1;
+		private System.Windows.Forms.ComboBox cmbMotifs;
+		private System.Windows.Forms.DateTimePicker dtpDateFin;
+		private System.Windows.Forms.DateTimePicker dtpDateDebut;
 	}
 }
 
