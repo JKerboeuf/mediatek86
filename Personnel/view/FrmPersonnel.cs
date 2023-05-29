@@ -215,7 +215,7 @@ namespace Personnel.view
 			{
 				controller.AddAbsence(newAbsence);
 			}
-			RemplirListePersonnels();
+			RemplirListeAbsences(personnel);
 		}
 	}
 }

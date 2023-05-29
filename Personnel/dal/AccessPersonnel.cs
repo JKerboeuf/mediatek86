@@ -82,7 +82,7 @@ namespace Personnel.dal
 					{ "@nom", personnel.Nom },
 					{ "@prenom", personnel.Prenom },
 					{ "@tel", personnel.Tel },
-					{ "@mail", personnel.Mail },
+					{ "@mail", personnel.Mail }
 				};
 				try
 				{

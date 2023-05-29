@@ -84,7 +84,29 @@ namespace Personnel.dal
 		{
 			if (access.Manager != null)
 			{
-
+				string req = "update absence " +
+					"set datedebut = @datedebut, " +
+					"idmotif = @idmotif, " +
+					"datefin = @datefin " +
+					"where absence.idpersonnel = @idpersonnel " +
+					"and absence.datedebut = @datemodif;";
+				Dictionary<string, object> parameters = new Dictionary<string, object>
+				{
+					{ "@idmotif", absence.Motif.Id },
+					{ "@datedebut", absence.DateDebut.ToString("yyyy-MM-dd HH:mm:ss") },
+					{ "@datefin", absence.DateFin.ToString("yyyy-MM-dd HH:mm:ss") },
+					{ "@idpersonnel", idPersonnelModif },
+					{ "@datemodif", idDateModif.ToString("yyyy-MM-dd HH:mm:ss") }
+				};
+				try
+				{
+					access.Manager.ReqUpdate(req, parameters);
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine(e.Message);
+					Environment.Exit(0);
+				}
 			}
 		}
 
