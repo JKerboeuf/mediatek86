@@ -33,6 +33,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2983E5212FDC4220BBA43FA158B65F1D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_3AE6E886139C96835045E5E157BE37AA"
         "OwnerKey" = "8:_C6FF9E1034874F847E53E9B5D7E7617C"
         "MsmSig" = "8:_UNDEFINED"
@@ -456,6 +462,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2983E5212FDC4220BBA43FA158B65F1D"
+            {
+            "SourcePath" = "8:..\\MediaTek86.ico"
+            "TargetName" = "8:MediaTek86.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_ED71D2ED23CA4720A3947074AB932C50"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3AE6E886139C96835045E5E157BE37AA"
             {
             "AssemblyRegister" = "3:1"
@@ -854,7 +880,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MediaTek86"
         "ProductCode" = "8:{02C1207B-7855-483A-8BD6-54F8502790D3}"
-        "PackageCode" = "8:{D0C62427-6F18-471F-8646-F84356FF8A5D}"
+        "PackageCode" = "8:{65109553-8433-4CAE-BB1E-DC5019431808}"
         "UpgradeCode" = "8:{5632427B-D05A-4A48-8B81-2A42FDAA1571}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -985,7 +1011,7 @@
             "Target" = "8:_5BDE1AE78A9C4A3EAD7B96CED8640A5E"
             "Folder" = "8:_4D88A77D81124FCBB912586D92EE0816"
             "WorkingFolder" = "8:_ED71D2ED23CA4720A3947074AB932C50"
-            "Icon" = "8:"
+            "Icon" = "8:_2983E5212FDC4220BBA43FA158B65F1D"
             "Feature" = "8:"
             }
         }

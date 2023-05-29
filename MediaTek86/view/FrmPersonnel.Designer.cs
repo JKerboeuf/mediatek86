@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPersonnel));
 			this.grbPersonnel = new System.Windows.Forms.GroupBox();
 			this.lsbPersonnel = new System.Windows.Forms.ListBox();
 			this.btnPersoAjout = new System.Windows.Forms.Button();
@@ -369,6 +370,7 @@
 			this.Controls.Add(this.grbAbsence);
 			this.Controls.Add(this.grbPersoModif);
 			this.Controls.Add(this.grbPersonnel);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "FrmPersonnel";
 			this.Text = "Personnel";
 			this.grbPersonnel.ResumeLayout(false);
