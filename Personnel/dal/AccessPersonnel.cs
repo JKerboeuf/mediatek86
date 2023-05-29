@@ -60,7 +60,26 @@ namespace Personnel.dal
 		{
 			if (access.Manager != null)
 			{
-
+				string req = "insert into personnel " +
+					"(idpersonnel, idservice, nom, prenom, tel, mail) " +
+					"VALUES (NULL, @idservice, @nom, @prenom, @tel, @mail);";
+				Dictionary<string, object> parameters = new Dictionary<string, object>
+				{
+					{ "@idservice", personnel.Service.Id },
+					{ "@nom", personnel.Nom },
+					{ "@prenom", personnel.Prenom },
+					{ "@tel", personnel.Tel },
+					{ "@mail", personnel.Mail }
+				};
+				try
+				{
+					access.Manager.ReqUpdate(req, parameters);
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine(e.Message);
+					Environment.Exit(0);
+				}
 			}
 		}
 
