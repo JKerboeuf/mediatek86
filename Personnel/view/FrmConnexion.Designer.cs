@@ -41,7 +41,6 @@
 			this.txtIdentifiant.Name = "txtIdentifiant";
 			this.txtIdentifiant.Size = new System.Drawing.Size(174, 20);
 			this.txtIdentifiant.TabIndex = 0;
-			this.txtIdentifiant.Text = "MediaTek86admin";
 			// 
 			// txtMdp
 			// 
@@ -50,7 +49,6 @@
 			this.txtMdp.PasswordChar = '●';
 			this.txtMdp.Size = new System.Drawing.Size(174, 20);
 			this.txtMdp.TabIndex = 1;
-			this.txtMdp.Text = "MediaTek86admin";
 			// 
 			// btnConnect
 			// 

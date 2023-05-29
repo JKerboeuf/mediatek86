@@ -6,7 +6,7 @@ namespace Personnel.dal
 	public class Access
 	{
 		private static Access instance = null;
-		private static readonly string connectString = "server=localhost;user id=root;database=mediatek86;SslMode=none";
+		private static readonly string connectString = "server=localhost;user id=MediaTek86admin;Password=MediaTek86admin;database=mediatek86;SslMode=none";
 		public BddManager Manager { get; }
 
 		private Access()
