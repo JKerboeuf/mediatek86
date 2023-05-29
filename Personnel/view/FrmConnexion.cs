@@ -5,16 +5,28 @@ using System.Windows.Forms;
 
 namespace Personnel.view
 {
+	/// <summary>
+	/// Classe de la fenetre de connection
+	/// </summary>
 	public partial class FrmConnexion : Form
 	{
 		private readonly FrmConnexionController controller;
 
+		/// <summary>
+		/// constructeur de la fenetre de connection
+		/// </summary>
 		public FrmConnexion()
 		{
 			InitializeComponent();
 			controller = new FrmConnexionController();
 		}
 
+		/// <summary>
+		/// Méthode évenementielle sur le clic du bouton permettant de se connecter
+		/// Enclenche la vérification des identifiants pour la connection
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnConnect_Click(object sender, EventArgs e)
 		{
 			string login = txtIdentifiant.Text;

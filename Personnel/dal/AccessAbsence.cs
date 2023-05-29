@@ -4,15 +4,26 @@ using System.Collections.Generic;
 
 namespace Personnel.dal
 {
+	/// <summary>
+	/// Classe concernant l'acces à la table absence de la bdd
+	/// </summary>
 	public class AccessAbsence
 	{
 		private readonly Access access = null;
 
+		/// <summary>
+		/// Constructeur de l'acces à la table absence
+		/// </summary>
 		public AccessAbsence()
 		{
 			access = Access.GetInstance();
 		}
 
+		/// <summary>
+		/// Convertisseur de la ligne d'objets obtenu de la bdd en absence
+		/// </summary>
+		/// <param name="absence">La ligne issu de la bdd</param>
+		/// <returns>L'absence créé grâce aux information de la bdd</returns>
 		private Absence ConvertAbsence(object[] absence)
 		{
 			Service service = new Service(
@@ -39,6 +50,10 @@ namespace Personnel.dal
 			);
 		}
 
+		/// <summary>
+		/// Méthode permettant d'obtenir la liste des absences éxistantes dans la bdd
+		/// </summary>
+		/// <returns>la liste des absences</returns>
 		public List<Absence> GetLesAbsences(model.Personnel personnel)
 		{
 			List<Absence> lesAbsences = new List<Absence>();
@@ -72,6 +87,11 @@ namespace Personnel.dal
 			return lesAbsences;
 		}
 
+		/// <summary>
+		/// Méthode permettant d'ajouter une absence dans la bdd
+		/// </summary>
+		/// <param name="absence">l'absence à ajouter</param>
+		/// <param name="idPersonnel">l'id du personnel concerné par l'absence</param>
 		public void AddAbsence(Absence absence, int idPersonnel)
 		{
 			if (access.Manager != null)
@@ -98,6 +118,12 @@ namespace Personnel.dal
 			}
 		}
 
+		/// <summary>
+		/// Méthode permettant de modifier une absence dans la bdd
+		/// </summary>
+		/// <param name="absence">l'absence modifié</param>
+		/// <param name="idPersonnelModif">l'id du personnel concerné par l'absence</param>
+		/// <param name="idDateModif">la date de debut de l'absence à modifier</param>
 		public void ModifAbsence(Absence absence, int idPersonnelModif, DateTime idDateModif)
 		{
 			if (access.Manager != null)
@@ -128,6 +154,10 @@ namespace Personnel.dal
 			}
 		}
 
+		/// <summary>
+		/// Méthode permettant de supprimer une absence dans la bdd
+		/// </summary>
+		/// <param name="absence">l'absence à supprimer</param>
 		public void DeleteAbsence(Absence absence)
 		{
 			if (access.Manager != null)

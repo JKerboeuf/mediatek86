@@ -6,15 +6,26 @@ using System.Windows.Forms.Design;
 
 namespace Personnel.dal
 {
+	/// <summary>
+	/// Classe concernant l'acces à la table personnel de la bdd
+	/// </summary>
 	public class AccessPersonnel
 	{
 		private readonly Access access = null;
 
+		/// <summary>
+		/// Constructeur de l'acces à la table personnel
+		/// </summary>
 		public AccessPersonnel()
 		{
 			access = Access.GetInstance();
 		}
 
+		/// <summary>
+		/// Convertisseur de la ligne d'objets obtenu de la bdd en personnel
+		/// </summary>
+		/// <param name="personnel">La ligne issu de la bdd</param>
+		/// <returns>Le personnel créé grâce aux information de la bdd</returns>
 		private model.Personnel ConvertPersonnel(object[] personnel)
 		{
 			Service service = new Service(
@@ -31,6 +42,10 @@ namespace Personnel.dal
 			);
 		}
 
+		/// <summary>
+		/// Méthode permettant d'obtenir la liste des personnels éxistant dans la bdd
+		/// </summary>
+		/// <returns>la liste des personnels</returns>
 		public List<model.Personnel> GetLesPersonnels()
 		{
 			List<model.Personnel> lesPersonnels = new List<model.Personnel>();
@@ -56,6 +71,10 @@ namespace Personnel.dal
 			return lesPersonnels;
 		}
 
+		/// <summary>
+		/// Méthode permettant d'ajouter un personnel dans la bdd
+		/// </summary>
+		/// <param name="personnel">le personnel à ajouter</param>
 		public void AddPersonnel(model.Personnel personnel)
 		{
 			if (access.Manager != null)
@@ -83,6 +102,11 @@ namespace Personnel.dal
 			}
 		}
 
+		/// <summary>
+		/// Méthode permettant de modifier un personnel dans la bdd
+		/// </summary>
+		/// <param name="personnel">le personnel modifié</param>
+		/// <param name="idPersonnelModif">l'id du personnel à modifier</param>
 		public void ModifPersonnel(model.Personnel personnel, int idPersonnelModif)
 		{
 			if (access.Manager != null)
@@ -115,6 +139,10 @@ namespace Personnel.dal
 			}
 		}
 
+		/// <summary>
+		/// Méthode permettant de supprimer un personnel de la bdd
+		/// </summary>
+		/// <param name="personnel">le personnel à supprimer</param>
 		public void DeletePersonnel(model.Personnel personnel)
 		{
 			if (access.Manager != null)

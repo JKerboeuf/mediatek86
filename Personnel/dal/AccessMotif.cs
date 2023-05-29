@@ -4,15 +4,25 @@ using System;
 
 namespace Personnel.dal
 {
+	/// <summary>
+	/// Classe concernant l'acces à la table motif de la bdd
+	/// </summary>
 	public class AccessMotif
 	{
 		private readonly Access access = null;
 
+		/// <summary>
+		/// Constructeur de l'acces à la table motif
+		/// </summary>
 		public AccessMotif()
 		{
 			access = Access.GetInstance();
 		}
 
+		/// <summary>
+		/// Méthode permettant d'obtenir la liste des motifs éxistant dans la bdd
+		/// </summary>
+		/// <returns>la liste des motifs</returns>
 		public List<Motif> GetLesMotifs()
 		{
 			List<Motif> lesMotifs = new List<Motif>();
@@ -36,6 +46,11 @@ namespace Personnel.dal
 			return lesMotifs;
 		}
 
+		/// <summary>
+		/// Convertisseur de la ligne d'objets obtenu de la bdd en motif
+		/// </summary>
+		/// <param name="motif">La ligne issu de la bdd</param>
+		/// <returns>Le motif créé grâce aux information de la bdd</returns>
 		private Motif ConvertService(object[] motif)
 		{
 			return new Motif((int)motif[0], (string)motif[1]);

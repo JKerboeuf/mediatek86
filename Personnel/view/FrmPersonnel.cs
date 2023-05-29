@@ -6,6 +6,9 @@ using System.Windows.Forms;
 
 namespace Personnel.view
 {
+	/// <summary>
+	/// Class de la fenetre principale
+	/// </summary>
 	public partial class FrmPersonnel : Form
 	{
 		private readonly FrmPersonnelController controller;
@@ -14,6 +17,9 @@ namespace Personnel.view
 		private readonly BindingSource bdgServices = new BindingSource();
 		private readonly BindingSource bdgMotifs = new BindingSource();
 
+		/// <summary>
+		/// Constructeur de la fenetre principale
+		/// </summary>
 		public FrmPersonnel()
 		{
 			InitializeComponent();
@@ -23,6 +29,9 @@ namespace Personnel.view
 			RemplirListePersonnels();
 		}
 
+		/// <summary>
+		/// Rempli la ComboBox des motifs d'absence avec ceux disponibles dans la bdd
+		/// </summary>
 		private void RemplirListeMotifs()
 		{
 			List<Motif> lesMotifs = controller.GetLesMotifs();
@@ -30,6 +39,9 @@ namespace Personnel.view
 			cmbMotifs.DataSource = bdgMotifs;
 		}
 
+		/// <summary>
+		/// Rempli la ComboBox des services avec ceux disponibles dans la bdd
+		/// </summary>
 		private void RemplirListeServices()
 		{
 			List<Service> lesServices = controller.GetLesServices();
@@ -37,6 +49,9 @@ namespace Personnel.view
 			cmbServices.DataSource = bdgServices;
 		}
 
+		/// <summary>
+		/// Rempli la ListBox des personnels
+		/// </summary>
 		private void RemplirListePersonnels()
 		{
 			List<model.Personnel> lesPersonnels = controller.GetLesPersonnels();
@@ -45,6 +60,10 @@ namespace Personnel.view
 			grbPersonnel.Enabled = true;
 		}
 
+		/// <summary>
+		/// Rempli la ListBox des absences
+		/// </summary>
+		/// <param name="personnel">le personnel dont il faut récuperer les absences</param>
 		private void RemplirListeAbsences(model.Personnel personnel)
 		{
 			List<Absence> lesAbsences = controller.GetLesAbsences(personnel);
@@ -54,6 +73,10 @@ namespace Personnel.view
 			grbPersonnel.Enabled = true;
 		}
 
+		/// <summary>
+		/// Rempli les informations d'un personnel dans la partie modification de personnel de la fenetre
+		/// </summary>
+		/// <param name="personnel">le personnel dont il faut afficher les informations</param>
 		private void RemplirModifPersonnel(model.Personnel personnel)
 		{
 			ViderModifAbsence();
@@ -65,6 +88,10 @@ namespace Personnel.view
 			grbPersoModif.Enabled = true;
 		}
 
+		/// <summary>
+		/// Remplis les informations d'une absence dans la partie modification d'absence de la fenetre
+		/// </summary>
+		/// <param name="absence">l'absence dont il faut afficher les informations</param>
 		private void RemplirModifAbsence(Absence absence)
 		{
 			dtpDateDebut.Value = absence.DateDebut;
@@ -73,6 +100,9 @@ namespace Personnel.view
 			grbAbsModif.Enabled = true;
 		}
 
+		/// <summary>
+		/// Vide les informations de la partie modification de personnel
+		/// </summary>
 		private void ViderModifPersonnel()
 		{
 			grbPersoModif.Enabled = false;
@@ -83,6 +113,9 @@ namespace Personnel.view
 			cmbServices.SelectedIndex = 0;
 		}
 
+		/// <summary>
+		/// Vide les informations de la partie modification d'absence
+		/// </summary>
 		private void ViderModifAbsence()
 		{
 			grbAbsModif.Enabled = false;
@@ -91,6 +124,10 @@ namespace Personnel.view
 			cmbMotifs.SelectedIndex = 0;
 		}
 
+		/// <summary>
+		/// Verifie si les informations de la partie modification de personnel sont correctes
+		/// </summary>
+		/// <returns></returns>
 		private bool CheckModifPerso()
 		{
 			if (txtNom.Text != string.Empty && txtPrenom.Text != string.Empty &&
@@ -106,6 +143,10 @@ namespace Personnel.view
 			}
 		}
 
+		/// <summary>
+		/// Verifie si les informations de la partie modification d'absence sont correctes
+		/// </summary>
+		/// <returns></returns>
 		private bool CheckModifAbs()
 		{
 			if (dtpDateDebut.Value <= dtpDateFin.Value)
@@ -119,6 +160,12 @@ namespace Personnel.view
 			}
 		}
 
+		/// <summary>
+		/// Méthode évenementielle sur le double clique dans la liste de personnel
+		/// Récupère les informations du personnel sélectionné
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void LsbPersonnel_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
 			if (lsbPersonnel.SelectedIndex >= 0)
@@ -129,6 +176,12 @@ namespace Personnel.view
 			}
 		}
 
+		/// <summary>
+		/// Méthode évenementielle sur le clique du bouton de suppression de personnel
+		/// Supprime le personnel sélectionné
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnPersoSuppr_Click(object sender, EventArgs e)
 		{
 			if (lsbPersonnel.SelectedIndex >= 0 &&
@@ -142,6 +195,12 @@ namespace Personnel.view
 			}
 		}
 
+		/// <summary>
+		/// Méthode évenementielle sur le clique du bouton d'ajout de personnel
+		/// Ajoute un nouveau personnel
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnPersoAjout_Click(object sender, EventArgs e)
 		{
 			ViderModifPersonnel();
@@ -151,12 +210,24 @@ namespace Personnel.view
 			grbAbsence.Enabled = false;
 		}
 
+		/// <summary>
+		/// Méthode évenementielle sur le clique du bouton d'annulation de personnel
+		/// Annule en vidant les information de la partie de modification de personnel
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnPersoAnnuler_Click(object sender, EventArgs e)
 		{
 			ViderModifPersonnel();
 			grbPersonnel.Enabled = true;
 		}
 
+		/// <summary>
+		/// Méthode évenementielle sur le clique du bouton d'enregistrement de personnel
+		/// Enregistre les modifications du personnel
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnPersoEnreg_Click(object sender, EventArgs e)
 		{
 			if (CheckModifPerso())
@@ -177,6 +248,12 @@ namespace Personnel.view
 			}
 		}
 
+		/// <summary>
+		/// Méthode évenementielle sur le double clique dans la liste des absences
+		/// Récupère les informations de l'absence sélectionné
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void LsbAbsence_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
 			if (lsbAbsence.SelectedIndex >= 0)
@@ -187,6 +264,12 @@ namespace Personnel.view
 			}
 		}
 
+		/// <summary>
+		/// Méthode évenementielle sur le clique du bouton de suppression d'absence
+		/// Supprime l'absence sélectionné
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnAbsSuppr_Click(object sender, EventArgs e)
 		{
 			if (lsbAbsence.SelectedIndex >= 0 &&
@@ -199,6 +282,12 @@ namespace Personnel.view
 			}
 		}
 
+		/// <summary>
+		/// Méthode évenementielle sur le clique du bouton d'ajout d'absence
+		/// Ajoute une nouvelle absence
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnAbsAjout_Click(object sender, EventArgs e)
 		{
 			ViderModifAbsence();
@@ -208,6 +297,12 @@ namespace Personnel.view
 			grbAbsence.Enabled = false;
 		}
 
+		/// <summary>
+		/// Méthode évenementielle sur le clique du bouton d'annulation d'absence
+		/// Annule en vidant les information de la partie de modification d'absence
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnAbsAnnuler_Click(object sender, EventArgs e)
 		{
 			ViderModifAbsence();
@@ -215,6 +310,12 @@ namespace Personnel.view
 			grbPersonnel.Enabled = true;
 		}
 
+		/// <summary>
+		/// Méthode évenementielle sur le clique du bouton d'enregistrement d'absence
+		/// Enregistre les modifications de l'absence
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnAbsEnreg_Click(object sender, EventArgs e)
 		{
 			if (CheckModifAbs())

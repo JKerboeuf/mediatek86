@@ -4,15 +4,26 @@ using Personnel.model;
 
 namespace Personnel.dal
 {
+	/// <summary>
+	/// Classe concernant l'acces à la table responsable de la bdd
+	/// </summary>
 	public class AccessResponsable
 	{
 		private readonly Access access = null;
 
+		/// <summary>
+		/// Constructeur de l'acces à la table responsable
+		/// </summary>
 		public AccessResponsable()
 		{
 			access = Access.GetInstance();
 		}
 
+		/// <summary>
+		/// Vérifie si les identifiants entrés sont bien ceux du responsable
+		/// </summary>
+		/// <param name="responsable">le responsable à tester</param>
+		/// <returns>vrai si les identifiants sont correctes, sinon faux</returns>
 		public bool ControleAuthentification(Responsable responsable)
 		{
 			if (access.Manager != null)
