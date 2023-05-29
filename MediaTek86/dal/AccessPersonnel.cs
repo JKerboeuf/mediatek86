@@ -1,10 +1,8 @@
-﻿using Org.BouncyCastle.Utilities.Collections;
-using Personnel.model;
+﻿using MediaTek86.model;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms.Design;
 
-namespace Personnel.dal
+namespace MediaTek86.dal
 {
 	/// <summary>
 	/// Classe concernant l'acces à la table personnel de la bdd
@@ -26,13 +24,13 @@ namespace Personnel.dal
 		/// </summary>
 		/// <param name="personnel">La ligne issu de la bdd</param>
 		/// <returns>Le personnel créé grâce aux information de la bdd</returns>
-		private model.Personnel ConvertPersonnel(object[] personnel)
+		private Personnel ConvertPersonnel(object[] personnel)
 		{
 			Service service = new Service(
 				(int)personnel[5],
 				(string)personnel[6]
 			);
-			return new model.Personnel(
+			return new Personnel(
 				(int)personnel[0],
 				service,
 				(string)personnel[1],
@@ -46,9 +44,9 @@ namespace Personnel.dal
 		/// Méthode permettant d'obtenir la liste des personnels éxistant dans la bdd
 		/// </summary>
 		/// <returns>la liste des personnels</returns>
-		public List<model.Personnel> GetLesPersonnels()
+		public List<Personnel> GetLesPersonnels()
 		{
-			List<model.Personnel> lesPersonnels = new List<model.Personnel>();
+			List<Personnel> lesPersonnels = new List<Personnel>();
 			if (access.Manager != null)
 			{
 				string req = "select p.idpersonnel, p.nom, p.prenom, p.tel, p.mail, s.idservice, s.nom " +
@@ -59,7 +57,7 @@ namespace Personnel.dal
 					List<object[]> records = access.Manager.ReqSelect(req);
 					if (records != null)
 					{
-						lesPersonnels = records.ConvertAll(new Converter<object[], model.Personnel>(ConvertPersonnel));
+						lesPersonnels = records.ConvertAll(new Converter<object[], Personnel>(ConvertPersonnel));
 					}
 				}
 				catch (Exception e)
@@ -75,7 +73,7 @@ namespace Personnel.dal
 		/// Méthode permettant d'ajouter un personnel dans la bdd
 		/// </summary>
 		/// <param name="personnel">le personnel à ajouter</param>
-		public void AddPersonnel(model.Personnel personnel)
+		public void AddPersonnel(Personnel personnel)
 		{
 			if (access.Manager != null)
 			{
@@ -107,7 +105,7 @@ namespace Personnel.dal
 		/// </summary>
 		/// <param name="personnel">le personnel modifié</param>
 		/// <param name="idPersonnelModif">l'id du personnel à modifier</param>
-		public void ModifPersonnel(model.Personnel personnel, int idPersonnelModif)
+		public void ModifPersonnel(Personnel personnel, int idPersonnelModif)
 		{
 			if (access.Manager != null)
 			{
@@ -143,7 +141,7 @@ namespace Personnel.dal
 		/// Méthode permettant de supprimer un personnel de la bdd
 		/// </summary>
 		/// <param name="personnel">le personnel à supprimer</param>
-		public void DeletePersonnel(model.Personnel personnel)
+		public void DeletePersonnel(Personnel personnel)
 		{
 			if (access.Manager != null)
 			{

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Personnel.model
+namespace MediaTek86.model
 {
 	/// <summary>
 	/// Classe concernant une absence d'un personnel

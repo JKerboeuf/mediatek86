@@ -1,7 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 
-namespace Personnel.bddmanager
+namespace MediaTek86.bddmanager
 {
 	/// <summary>
 	/// Classe technique Singleton pour gerer la connection à la base de donnée

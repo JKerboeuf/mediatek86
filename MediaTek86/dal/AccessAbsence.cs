@@ -1,8 +1,8 @@
-﻿using Personnel.model;
+﻿using MediaTek86.model;
 using System;
 using System.Collections.Generic;
 
-namespace Personnel.dal
+namespace MediaTek86.dal
 {
 	/// <summary>
 	/// Classe concernant l'acces à la table absence de la bdd
@@ -30,7 +30,7 @@ namespace Personnel.dal
 				(int)absence[9],
 				(string)absence[10]
 			);
-			model.Personnel personnel = new model.Personnel(
+			Personnel personnel = new Personnel(
 				(int)absence[4],
 				service,
 				(string)absence[5],
@@ -53,8 +53,9 @@ namespace Personnel.dal
 		/// <summary>
 		/// Méthode permettant d'obtenir la liste des absences éxistantes dans la bdd
 		/// </summary>
+		/// <param name="personnel">Le personnel dont il faut récuperer les absences</param>
 		/// <returns>la liste des absences</returns>
-		public List<Absence> GetLesAbsences(model.Personnel personnel)
+		public List<Absence> GetLesAbsences(Personnel personnel)
 		{
 			List<Absence> lesAbsences = new List<Absence>();
 			if (access.Manager != null)

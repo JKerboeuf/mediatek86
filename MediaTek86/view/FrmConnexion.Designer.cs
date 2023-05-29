@@ -1,4 +1,4 @@
-﻿namespace Personnel.view
+﻿namespace MediaTek86.view
 {
 	partial class FrmConnexion
 	{

@@ -1,7 +1,7 @@
-﻿using Personnel.dal;
-using Personnel.model;
+﻿using MediaTek86.dal;
+using MediaTek86.model;
 
-namespace Personnel.control
+namespace MediaTek86.control
 {
 	/// <summary>
 	/// Classe du controller de la fenetre de connexion

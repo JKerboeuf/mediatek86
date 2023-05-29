@@ -1,11 +1,8 @@
-﻿using Personnel.view;
+﻿using MediaTek86.view;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Personnel
+namespace MediaTek86
 {
 	internal static class Program
 	{

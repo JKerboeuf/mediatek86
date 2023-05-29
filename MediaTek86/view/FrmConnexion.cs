@@ -1,9 +1,9 @@
-﻿using Personnel.control;
-using Personnel.model;
+﻿using MediaTek86.control;
+using MediaTek86.model;
 using System;
 using System.Windows.Forms;
 
-namespace Personnel.view
+namespace MediaTek86.view
 {
 	/// <summary>
 	/// Classe de la fenetre de connection

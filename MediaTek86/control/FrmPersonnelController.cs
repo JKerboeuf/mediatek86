@@ -1,9 +1,9 @@
-﻿using Personnel.dal;
-using Personnel.model;
+﻿using MediaTek86.dal;
+using MediaTek86.model;
 using System;
 using System.Collections.Generic;
 
-namespace Personnel.control
+namespace MediaTek86.control
 {
 	/// <summary>
 	/// Classe du controlleur de la fenetre principal
@@ -48,7 +48,7 @@ namespace Personnel.control
 		/// Méthode permettant d'obtenir la liste des personnels éxistant dans la bdd
 		/// </summary>
 		/// <returns>la liste des personnels</returns>
-		public List<model.Personnel> GetLesPersonnels()
+		public List<Personnel> GetLesPersonnels()
 		{
 			return accessPersonnel.GetLesPersonnels();
 		}
@@ -56,8 +56,9 @@ namespace Personnel.control
 		/// <summary>
 		/// Méthode permettant d'obtenir la liste des absences éxistantes dans la bdd
 		/// </summary>
+		/// <param name="personnel">Le personnel dont il faut récuperer les absences</param>
 		/// <returns>la liste des absences</returns>
-		public List<Absence> GetLesAbsences(model.Personnel personnel)
+		public List<Absence> GetLesAbsences(Personnel personnel)
 		{
 			return accessAbsence.GetLesAbsences(personnel);
 		}
@@ -66,7 +67,7 @@ namespace Personnel.control
 		/// Méthode permettant d'ajouter un personnel dans la bdd
 		/// </summary>
 		/// <param name="personnel">le personnel à ajouter</param>
-		public void AddPersonnel(model.Personnel personnel)
+		public void AddPersonnel(Personnel personnel)
 		{
 			accessPersonnel.AddPersonnel(personnel);
 		}
@@ -86,7 +87,7 @@ namespace Personnel.control
 		/// </summary>
 		/// <param name="personnel">le personnel modifié</param>
 		/// <param name="idPersonnelModif">l'id du personnel à modifier</param>
-		public void ModifPersonnel(model.Personnel personnel, int idPersonnelModif)
+		public void ModifPersonnel(Personnel personnel, int idPersonnelModif)
 		{
 			accessPersonnel.ModifPersonnel(personnel, idPersonnelModif);
 		}
@@ -106,7 +107,7 @@ namespace Personnel.control
 		/// Méthode permettant de supprimer un personnel de la bdd
 		/// </summary>
 		/// <param name="personnel">le personnel à supprimer</param>
-		public void DeletePersonnel(model.Personnel personnel)
+		public void DeletePersonnel(Personnel personnel)
 		{
 			accessPersonnel.DeletePersonnel(personnel);
 		}

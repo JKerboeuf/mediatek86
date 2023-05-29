@@ -1,4 +1,4 @@
-﻿namespace Personnel.model
+﻿namespace MediaTek86.model
 {
 	/// <summary>
 	/// Classe concernant les motifs des absences

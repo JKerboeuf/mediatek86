@@ -1,7 +1,7 @@
-﻿using Personnel.bddmanager;
+﻿using MediaTek86.bddmanager;
 using System;
 
-namespace Personnel.dal
+namespace MediaTek86.dal
 {
 	/// <summary>
 	/// Classe Singleton gérant l'acces à la bdd
@@ -33,7 +33,7 @@ namespace Personnel.dal
 		/// <summary>
 		/// Getter sur l'instance de l'acces
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>L'instance de l'acces</returns>
 		public static Access GetInstance()
 		{
 			if (instance == null)

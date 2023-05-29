@@ -1,10 +1,10 @@
-﻿using Personnel.control;
-using Personnel.model;
+﻿using MediaTek86.control;
+using MediaTek86.model;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace Personnel.view
+namespace MediaTek86.view
 {
 	/// <summary>
 	/// Class de la fenetre principale
@@ -54,7 +54,7 @@ namespace Personnel.view
 		/// </summary>
 		private void RemplirListePersonnels()
 		{
-			List<model.Personnel> lesPersonnels = controller.GetLesPersonnels();
+			List<Personnel> lesPersonnels = controller.GetLesPersonnels();
 			bdgPersonnels.DataSource = lesPersonnels;
 			lsbPersonnel.DataSource = bdgPersonnels;
 			grbPersonnel.Enabled = true;
@@ -64,7 +64,7 @@ namespace Personnel.view
 		/// Rempli la ListBox des absences
 		/// </summary>
 		/// <param name="personnel">le personnel dont il faut récuperer les absences</param>
-		private void RemplirListeAbsences(model.Personnel personnel)
+		private void RemplirListeAbsences(Personnel personnel)
 		{
 			List<Absence> lesAbsences = controller.GetLesAbsences(personnel);
 			bdgAbsences.DataSource = lesAbsences;
@@ -77,7 +77,7 @@ namespace Personnel.view
 		/// Rempli les informations d'un personnel dans la partie modification de personnel de la fenetre
 		/// </summary>
 		/// <param name="personnel">le personnel dont il faut afficher les informations</param>
-		private void RemplirModifPersonnel(model.Personnel personnel)
+		private void RemplirModifPersonnel(Personnel personnel)
 		{
 			ViderModifAbsence();
 			txtNom.Text = personnel.Nom;
@@ -170,7 +170,7 @@ namespace Personnel.view
 		{
 			if (lsbPersonnel.SelectedIndex >= 0)
 			{
-				model.Personnel personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
+				Personnel personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
 				RemplirListeAbsences(personnel);
 				RemplirModifPersonnel(personnel);
 			}
@@ -187,7 +187,7 @@ namespace Personnel.view
 			if (lsbPersonnel.SelectedIndex >= 0 &&
 				MessageBox.Show("Voulez-vous vraiment supprimer ce personnel ?", "Supprimer un personnel", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 			{
-				model.Personnel personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
+				Personnel personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
 				controller.DeletePersonnel(personnel);
 				RemplirListePersonnels();
 				personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
@@ -233,10 +233,10 @@ namespace Personnel.view
 			if (CheckModifPerso())
 			{
 				Service service = controller.GetLesServices()[cmbServices.FindStringExact(cmbServices.Text)];
-				model.Personnel newPersonnel = new model.Personnel(-1, service, txtNom.Text, txtPrenom.Text, txtTel.Text, txtMail.Text);
+				Personnel newPersonnel = new Personnel(-1, service, txtNom.Text, txtPrenom.Text, txtTel.Text, txtMail.Text);
 				if (grbPersonnel.Enabled)
 				{
-					model.Personnel personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
+					Personnel personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
 					newPersonnel.Id = personnel.Id;
 					controller.ModifPersonnel(newPersonnel, personnel.Id);
 				}
@@ -258,7 +258,7 @@ namespace Personnel.view
 		{
 			if (lsbAbsence.SelectedIndex >= 0)
 			{
-				model.Personnel personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
+				Personnel personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
 				Absence absence = controller.GetLesAbsences(personnel)[lsbAbsence.SelectedIndex];
 				RemplirModifAbsence(absence);
 			}
@@ -275,7 +275,7 @@ namespace Personnel.view
 			if (lsbAbsence.SelectedIndex >= 0 &&
 				MessageBox.Show("Voulez-vous vraiment supprimer cette absence ?", "Supprimer une absence", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 			{
-				model.Personnel personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
+				Personnel personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
 				Absence absence = controller.GetLesAbsences(personnel)[lsbAbsence.SelectedIndex];
 				controller.DeleteAbsence(absence);
 				RemplirListeAbsences(personnel);
@@ -320,7 +320,7 @@ namespace Personnel.view
 		{
 			if (CheckModifAbs())
 			{
-				model.Personnel personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
+				Personnel personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
 				Motif motif = controller.GetLesMotifs()[cmbMotifs.FindStringExact(cmbMotifs.Text)];
 				Absence newAbsence = new Absence(personnel, motif, dtpDateDebut.Value, dtpDateFin.Value);
 				if (grbPersonnel.Enabled)

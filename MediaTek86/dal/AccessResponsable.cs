@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using MediaTek86.model;
 using System;
-using Personnel.model;
+using System.Collections.Generic;
 
-namespace Personnel.dal
+namespace MediaTek86.dal
 {
 	/// <summary>
 	/// Classe concernant l'acces à la table responsable de la bdd
