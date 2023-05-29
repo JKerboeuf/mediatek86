@@ -45,9 +45,19 @@ namespace Personnel.control
 			accessPersonnel.AddPersonnel(personnel);
 		}
 
-		internal void AddAbsence(Absence absence)
+		public void AddAbsence(Absence absence)
 		{
 			accessAbsence.AddAbsence(absence);
+		}
+
+		public void ModifPersonnel(model.Personnel personnel, int idPersonnelModif)
+		{
+			accessPersonnel.ModifPersonnel(personnel, idPersonnelModif);
+		}
+
+		public void ModifAbsence(Absence absence, int idPersonnelModif, DateTime idDateModif)
+		{
+			accessAbsence.ModifAbsence(absence, idPersonnelModif, idDateModif);
 		}
 
 		public void DeletePersonnel(model.Personnel personnel)
@@ -55,7 +65,7 @@ namespace Personnel.control
 			accessPersonnel.DeletePersonnel(personnel);
 		}
 
-		internal void DeleteAbsence(Absence absence)
+		public void DeleteAbsence(Absence absence)
 		{
 			accessAbsence.DeleteAbsence(absence);
 		}

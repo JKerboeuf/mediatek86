@@ -74,7 +74,18 @@ namespace Personnel.dal
 
 		public void AddAbsence(Absence absence)
 		{
-			// Method intentionally left empty.
+			if (access.Manager != null)
+			{
+
+			}
+		}
+
+		public void ModifAbsence(Absence absence, int idPersonnelModif, DateTime idDateModif)
+		{
+			if (access.Manager != null)
+			{
+
+			}
 		}
 
 		public void DeleteAbsence(Absence absence)

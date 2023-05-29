@@ -1,6 +1,8 @@
-﻿using Personnel.model;
+﻿using Org.BouncyCastle.Utilities.Collections;
+using Personnel.model;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms.Design;
 
 namespace Personnel.dal
 {
@@ -56,7 +58,42 @@ namespace Personnel.dal
 
 		public void AddPersonnel(model.Personnel personnel)
 		{
-			// Method intentionally left empty.
+			if (access.Manager != null)
+			{
+
+			}
+		}
+
+		public void ModifPersonnel(model.Personnel personnel, int idPersonnelModif)
+		{
+			if (access.Manager != null)
+			{
+				string req = "update personnel " +
+					"set idservice = @idservice, " +
+					"nom = @nom, " +
+					"prenom = @prenom, " +
+					"tel = @tel, " +
+					"mail = @mail " +
+					"where personnel.idpersonnel = @idpersonnel;";
+				Dictionary<string, object> parameters = new Dictionary<string, object>
+				{
+					{ "@idpersonnel", idPersonnelModif },
+					{ "@idservice", personnel.Service.Id },
+					{ "@nom", personnel.Nom },
+					{ "@prenom", personnel.Prenom },
+					{ "@tel", personnel.Tel },
+					{ "@mail", personnel.Mail },
+				};
+				try
+				{
+					access.Manager.ReqUpdate(req, parameters);
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine(e.Message);
+					Environment.Exit(0);
+				}
+			}
 		}
 
 		public void DeletePersonnel(model.Personnel personnel)

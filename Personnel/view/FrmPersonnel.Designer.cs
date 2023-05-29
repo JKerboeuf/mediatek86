@@ -138,6 +138,7 @@
 			// 
 			// cmbServices
 			// 
+			this.cmbServices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cmbServices.FormattingEnabled = true;
 			this.cmbServices.Location = new System.Drawing.Point(79, 123);
 			this.cmbServices.Name = "cmbServices";
@@ -316,6 +317,7 @@
 			// 
 			// cmbMotifs
 			// 
+			this.cmbMotifs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cmbMotifs.FormattingEnabled = true;
 			this.cmbMotifs.Location = new System.Drawing.Point(79, 71);
 			this.cmbMotifs.Name = "cmbMotifs";

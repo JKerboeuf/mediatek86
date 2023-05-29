@@ -42,6 +42,7 @@ namespace Personnel.view
 			List<model.Personnel> lesPersonnels = controller.GetLesPersonnels();
 			bdgPersonnels.DataSource = lesPersonnels;
 			lsbPersonnel.DataSource = bdgPersonnels;
+			grbPersonnel.Enabled = true;
 		}
 
 		private void RemplirListeAbsences(model.Personnel personnel)
@@ -49,6 +50,7 @@ namespace Personnel.view
 			List<Absence> lesAbsences = controller.GetLesAbsences(personnel);
 			bdgAbsences.DataSource = lesAbsences;
 			lsbAbsence.DataSource = bdgAbsences;
+			grbAbsence.Enabled = true;
 		}
 
 		private void RemplirModifPersonnel(model.Personnel personnel)
@@ -88,6 +90,21 @@ namespace Personnel.view
 			cmbMotifs.SelectedIndex = 0;
 		}
 
+		private bool CheckModifPerso()
+		{
+			if (txtNom.Text != string.Empty && txtPrenom.Text != string.Empty &&
+				txtTel.Text != string.Empty && txtMail.Text != string.Empty &&
+				cmbServices.SelectedIndex >= 0)
+			{
+				return true;
+			}
+			else
+			{
+				MessageBox.Show("Vous devez remplir tous les champs avant de pouvoir enregistrer !", "Champs incomplets", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+		}
+
 		private void LsbPersonnel_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
 			if (lsbPersonnel.SelectedIndex >= 0)
@@ -113,17 +130,37 @@ namespace Personnel.view
 
 		private void BtnPersoAjout_Click(object sender, EventArgs e)
 		{
-			// Method intentionally left empty.
+			ViderModifPersonnel();
+			ViderModifAbsence();
+			grbPersoModif.Enabled = true;
+			grbPersonnel.Enabled = false;
+			grbAbsence.Enabled = false;
 		}
 
 		private void BtnPersoAnnuler_Click(object sender, EventArgs e)
 		{
 			ViderModifPersonnel();
+			grbPersonnel.Enabled = true;
 		}
 
 		private void BtnPersoEnreg_Click(object sender, EventArgs e)
 		{
-			// Method intentionally left empty.
+			if (CheckModifPerso())
+			{
+				Service service = controller.GetLesServices()[cmbServices.FindStringExact(cmbServices.Text)];
+				model.Personnel newPersonnel = new model.Personnel(-1, service, txtNom.Text, txtPrenom.Text, txtTel.Text, txtMail.Text);
+				if (grbPersonnel.Enabled)
+				{
+					model.Personnel personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
+					newPersonnel.Id = personnel.Id;
+					controller.ModifPersonnel(newPersonnel, personnel.Id);
+				}
+				else
+				{
+					controller.AddPersonnel(newPersonnel);
+				}
+				RemplirListePersonnels();
+			}
 		}
 
 		private void LsbAbsence_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -150,17 +187,35 @@ namespace Personnel.view
 
 		private void BtnAbsAjout_Click(object sender, EventArgs e)
 		{
-			// Method intentionally left empty.
+			ViderModifAbsence();
+			grbAbsModif.Enabled = true;
+			grbPersoModif.Enabled = false;
+			grbPersonnel.Enabled = false;
+			grbAbsence.Enabled = false;
 		}
 
 		private void BtnAbsAnnuler_Click(object sender, EventArgs e)
 		{
 			ViderModifAbsence();
+			grbAbsence.Enabled = true;
+			grbPersonnel.Enabled = true;
 		}
 
 		private void BtnAbsEnreg_Click(object sender, EventArgs e)
 		{
-			// Method intentionally left empty.
+			model.Personnel personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
+			Motif motif = controller.GetLesMotifs()[cmbMotifs.FindStringExact(cmbMotifs.Text)];
+			Absence newAbsence = new Absence(personnel, motif, dtpDateDebut.Value, dtpDateFin.Value);
+			if (grbPersonnel.Enabled)
+			{
+				Absence absence = controller.GetLesAbsences(personnel)[lsbAbsence.SelectedIndex];
+				controller.ModifAbsence(newAbsence, personnel.Id, absence.DateDebut);
+			}
+			else
+			{
+				controller.AddAbsence(newAbsence);
+			}
+			RemplirListePersonnels();
 		}
 	}
 }
