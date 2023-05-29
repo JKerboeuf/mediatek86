@@ -105,6 +105,19 @@ namespace Personnel.view
 			}
 		}
 
+		private bool CheckModifAbs()
+		{
+			if (dtpDateDebut.Value <= dtpDateFin.Value)
+			{
+				return true;
+			}
+			else
+			{
+				MessageBox.Show("La date de début ne peut pas être postérieure à la date de fin !", "Dates incorrectes", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+		}
+
 		private void LsbPersonnel_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
 			if (lsbPersonnel.SelectedIndex >= 0)
@@ -203,19 +216,22 @@ namespace Personnel.view
 
 		private void BtnAbsEnreg_Click(object sender, EventArgs e)
 		{
-			model.Personnel personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
-			Motif motif = controller.GetLesMotifs()[cmbMotifs.FindStringExact(cmbMotifs.Text)];
-			Absence newAbsence = new Absence(personnel, motif, dtpDateDebut.Value, dtpDateFin.Value);
-			if (grbPersonnel.Enabled)
+			if (CheckModifAbs())
 			{
-				Absence absence = controller.GetLesAbsences(personnel)[lsbAbsence.SelectedIndex];
-				controller.ModifAbsence(newAbsence, personnel.Id, absence.DateDebut);
+				model.Personnel personnel = controller.GetLesPersonnels()[lsbPersonnel.SelectedIndex];
+				Motif motif = controller.GetLesMotifs()[cmbMotifs.FindStringExact(cmbMotifs.Text)];
+				Absence newAbsence = new Absence(personnel, motif, dtpDateDebut.Value, dtpDateFin.Value);
+				if (grbPersonnel.Enabled)
+				{
+					Absence absence = controller.GetLesAbsences(personnel)[lsbAbsence.SelectedIndex];
+					controller.ModifAbsence(newAbsence, personnel.Id, absence.DateDebut);
+				}
+				else
+				{
+					controller.AddAbsence(newAbsence);
+				}
+				RemplirListeAbsences(personnel);
 			}
-			else
-			{
-				controller.AddAbsence(newAbsence);
-			}
-			RemplirListeAbsences(personnel);
 		}
 	}
 }
