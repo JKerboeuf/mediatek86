@@ -45,9 +45,9 @@ namespace Personnel.control
 			accessPersonnel.AddPersonnel(personnel);
 		}
 
-		public void AddAbsence(Absence absence)
+		public void AddAbsence(Absence absence, int idPersonnel)
 		{
-			accessAbsence.AddAbsence(absence);
+			accessAbsence.AddAbsence(absence, idPersonnel);
 		}
 
 		public void ModifPersonnel(model.Personnel personnel, int idPersonnelModif)

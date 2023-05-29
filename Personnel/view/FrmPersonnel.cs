@@ -51,6 +51,7 @@ namespace Personnel.view
 			bdgAbsences.DataSource = lesAbsences;
 			lsbAbsence.DataSource = bdgAbsences;
 			grbAbsence.Enabled = true;
+			grbPersonnel.Enabled = true;
 		}
 
 		private void RemplirModifPersonnel(model.Personnel personnel)
@@ -228,7 +229,7 @@ namespace Personnel.view
 				}
 				else
 				{
-					controller.AddAbsence(newAbsence);
+					controller.AddAbsence(newAbsence, personnel.Id);
 				}
 				RemplirListeAbsences(personnel);
 			}

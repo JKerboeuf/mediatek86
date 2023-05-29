@@ -72,11 +72,29 @@ namespace Personnel.dal
 			return lesAbsences;
 		}
 
-		public void AddAbsence(Absence absence)
+		public void AddAbsence(Absence absence, int idPersonnel)
 		{
 			if (access.Manager != null)
 			{
-
+				string req = "insert into absence " +
+					"(idpersonnel, datedebut, idmotif, datefin) " +
+					"values (@idpersonnel, @datedebut, @idmotif, @datefin);";
+				Dictionary<string, object> parameters = new Dictionary<string, object>
+				{
+					{ "@idpersonnel", idPersonnel },
+					{ "@idmotif", absence.Motif.Id },
+					{ "@datedebut", absence.DateDebut },
+					{ "@datefin", absence.DateFin },
+				};
+				try
+				{
+					access.Manager.ReqUpdate(req, parameters);
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine(e.Message);
+					Environment.Exit(0);
+				}
 			}
 		}
 
