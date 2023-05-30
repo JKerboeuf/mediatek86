@@ -131,7 +131,7 @@ INSERT INTO personnel (idpersonnel, idservice, nom, prenom, tel, mail) VALUES
 (4, 1, 'Cunningham', 'Bianca', '03 95 56 33 86', 'lacus.quisque@yahoo.edu'),
 (3, 3, 'Snow', 'Kevin', '03 35 85 78 80', 'a@protonmail.net'),
 (13, 2, 'Rabat', 'Bernard', '0646133052', 'Rabat.Bernard@gmail.com'),
-(14, 1, 'Bougnoul', 'Jean-Patrick', '06 46 13 30 52', 'lpr@gmail.com'),
+(14, 1, 'Bougoul', 'Jean-Patrick', '06 46 13 30 52', 'lpr@gmail.com'),
 (1, 2, 'Padilla', 'Blaze', '08 42 47 16 37', 'eget.laoreet@google.couk'),
 (5, 2, 'Winters', 'Chelsea', '05 32 25 72 68', 'vel.lectus@yahoo.edu'),
 (6, 1, 'Maddox', 'Katell', '03 92 74 63 58', 'porttitor.tellus.non@google.ca'),
