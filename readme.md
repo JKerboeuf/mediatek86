@@ -21,9 +21,3 @@ The initial connection is encryted with SHA256 and is SQL injection-proof.
 The Mediatek86 media library needs a tool facilitating the management of its staff that the manager will use.
 Mediatek86 requests software allowing the personnel manager to easily manage the staff.
 The software allows you to list the staff and their absences, it also allows you to add, modify or delete staff or absence.
-
-## Demo (in French)
-
-<video width="auto" controls>
-  <source src="/assets/MediaTek86.mp4" type="video/mp4">
-</video>
